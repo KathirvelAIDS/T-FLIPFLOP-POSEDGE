@@ -27,16 +27,61 @@ Here, Qtt & Qt+1t+1 are present state & next state respectively. So, T flip-flop
 From the above characteristic table, we can directly write the next state equation as Q(t+1)=T′Q(t)+TQ(t)′ ⇒Q(t+1)=T⊕Q(t)
 
 **Procedure**
+```
+1.Define Module: Define a Verilog module for the T flip-flop with inputs (T, CLK) and outputs (Q, Q_bar).
 
-/* write all the steps invloved */
+2.Declare Inputs and Outputs: Declare input and output ports for the module.
+
+3.Implement Flip-Flop Logic: Write Verilog code to implement the T flip-flop logic based on its functional table. Use a synchronous always @(posedge CLK) block to trigger the flip-flop on the positive edge of the clock signal.
+
+4.Simulate Using Testbench: Write a Verilog testbench to simulate the behavior of the T flip-flop under different input conditions.
+
+5.Apply Input Stimuli: In the testbench, apply various combinations of input stimuli (T, CLK) to cover all possible input states.
+
+6.Verify Output Behavior: Verify that the output behavior of the T flip-flop matches the expected behavior defined by its functional table.
+
+7.Check for Race Conditions: Ensure that there are no race conditions or undefined states in the design by analyzing the timing and sequence of input changes.
+```
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by:KATHIRVEL.A
+RegisterNumber:212221230047
 */
-
+```
+module tflipflop( input clk, rst_n, input t,
+output reg q,
+output q_bar
+);
+always@(posedge clk) 
+begin 
+if(!rst_n)
+q<=0;
+else 
+begin
+q<=(t?~q:q);
+end
+end
+assign q_bar = ~q;
+endmodule
+```
 **RTL LOGIC FOR FLIPFLOPS**
+
+
+
+
+
+![323157887-53692c4c-9782-4c25-b9b5-83e9b83b92ff](https://github.com/KathirvelAIDS/T-FLIPFLOP-POSEDGE/assets/94911373/33ef8394-5777-400d-ac97-3a482f11fe92)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
+
+
+
+![323157215-132c0f71-6d83-4004-87b5-d06b526d9143](https://github.com/KathirvelAIDS/T-FLIPFLOP-POSEDGE/assets/94911373/73663ce5-57f1-4e8e-908b-271a9ce74d21)
+
 **RESULTS**
+
+
+
+Thus the program to implement a T flipflop using verilog and validating their functionality using their functional tables is successfully completed.
